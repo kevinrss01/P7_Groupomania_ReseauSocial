@@ -1,26 +1,23 @@
 import './App.css';
-import axios from 'axios'; //Pour les Appels api
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; //Routes = Switch
+import Home from './pages/Home';
+import CreatePost from './pages/CreatePost';
+import Post from './pages/Post';
 
 function App() {
-	const [listOfPosts, setListOfPosts] = useState([]);
-
-	useEffect(() => {
-		axios.get('http://localhost:3002/posts').then((response) => {
-			setListOfPosts(response.data);
-		});
-	}, []);
 	return (
 		<div className="App">
-			{listOfPosts.map((value, key) => {
-				return (
-					<div className="post">
-						<div className="title"> {value.title} </div>
-						<div className="body">{value.postText}</div>
-						<div className="footer">{value.username}</div>
-					</div>
-				);
-			})}
+			<Router>
+				<div className="navbar">
+					<Link to="createPost"> Créer un poste </Link>
+					<Link to="/"> Page d'accueil </Link>
+				</div>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/createPost" element={<CreatePost />} />
+					<Route path="/post/:id" element={<Post />} />
+				</Routes>
+			</Router>
 		</div>
 	);
 }
