@@ -12,8 +12,19 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
+		image: {
+			type: DataTypes.STRING,
+		},
 	});
 
+	Posts.associate = (models) => {
+		Posts.hasMany(models.Comments, {
+			onDelete: 'CASCADE',
+		});
+
+		// 	Posts.belongsTo(models.Users, {
+		// 		foreignKey: 'userId',
+		// 	});
+	};
 	return Posts;
 };
-//
