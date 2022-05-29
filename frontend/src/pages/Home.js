@@ -45,7 +45,7 @@ function Home() {
 							<div className="footer">
 								<p>Posté(e) par : </p>
 								<Link className="namePost" to={`/profile/${value.UserId}`}>
-									<strong>{value.username}</strong>
+									<p>{value.username}</p>
 								</Link>
 							</div>
 						</div>

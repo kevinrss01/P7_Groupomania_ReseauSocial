@@ -14,6 +14,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Parameters from './pages/Parameters';
 import logoGroupomania from './Images/icon-left-font-monochrome-white.png';
+import { AiOutlineCloseSquare } from 'react-icons/ai';
+import { BiMenuAltRight } from 'react-icons/bi';
 
 //ROUTES "pages"
 //NAVBAR AND LINKS
@@ -25,6 +27,8 @@ function App() {
 		role: '',
 		status: false,
 	});
+	const [menuOpen, setMenuOpen] = useState(false);
+	const menuToggler = () => setMenuOpen((p) => !p);
 
 	useEffect(() => {
 		axios
@@ -61,6 +65,14 @@ function App() {
 		});
 	};
 
+	const Button = () => {
+		return (
+			<button className="btnResponsive" onClick={menuToggler}>
+				<BiMenuAltRight />
+			</button>
+		);
+	};
+
 	return (
 		<div className="App">
 			<AuthContext.Provider value={{ authState, setAuthState }}>
@@ -83,10 +95,11 @@ function App() {
 								</div>
 							</>
 						)}
-						<div className="img">
+						<Link to="/" id="logo">
 							<img src={logoGroupomania} />
-						</div>
-
+						</Link>
+						{/*BUTTON RESPOSIVE*/}
+						<Button />
 						{authState.status && (
 							<>
 								<div className="navbarRight">
@@ -105,6 +118,45 @@ function App() {
 							</>
 						)}
 					</div>
+					{menuOpen && (
+						<div id="navbarResponsive">
+							{!authState.status ? (
+								/*IF NOT LOGGED SHOW :*/
+								<>
+									<div className="loginRegistration">
+										<Link to="/login"> Se connecter </Link>
+										<Link to="/registration"> Créer un compte </Link>
+									</div>
+								</>
+							) : (
+								/*IF LOGGED SHOW :*/
+								<>
+									<div className="createPost">
+										<Link to="createPost">Créer un poste</Link>
+										<Link to="/"> Page d'accueil </Link>
+									</div>
+								</>
+							)}
+							{authState.status && (
+								<>
+									<div className="params">
+										<Link to="/parameters">
+											Parametres{' '}
+											<FontAwesomeIcon
+												icon={faGear}
+												className="gearIcon"
+											></FontAwesomeIcon>
+										</Link>
+
+										<Link to="/login">
+											<button onClick={logout}>Se déconnecter</button>
+										</Link>
+									</div>
+								</>
+							)}
+						</div>
+					)}
+
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/createPost" element={<CreatePost />} />

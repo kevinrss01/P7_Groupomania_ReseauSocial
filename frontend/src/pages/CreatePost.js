@@ -53,10 +53,12 @@ function CreatePost() {
 	};
 
 	//CUSTOM BUTTON ADD IMAGE
-	const realFileBtn = document.getElementById('inputImage');
-	const customTxt = document.getElementById('customText');
 
-	const clickRealButton = () => {
+	const customTxt = document.getElementById('customText');
+	const realFileBtn = document.getElementById('inputImage');
+
+	const clickRealButton = async () => {
+		const realFileBtn = document.getElementById('inputImage');
 		realFileBtn.click();
 	};
 
