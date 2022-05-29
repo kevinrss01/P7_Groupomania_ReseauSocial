@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; //useNavigate === useHistory
+import { useParams, useNavigate, Link } from 'react-router-dom'; //useNavigate === useHistory
 import axios from 'axios';
 import { AuthContext } from '../helpers/AuthContext';
 // import Image from '/Images';
@@ -91,9 +91,9 @@ function Post() {
 			<div className="leftSide">
 				<div className="post" id="individual">
 					<div className="title">{postObject.title}</div>
-					<div className="body">
-						<div>{postObject.postText}</div>
-						{postObject.image != 'undefined' && (
+					<div className="bodyIndividual">
+						<div className="postText">{postObject.postText}</div>
+						{postObject.image !== 'undefined' && (
 							<img
 								src={`http://localhost:3002/${postObject.image}`}
 								alt={postObject.image}
@@ -101,7 +101,9 @@ function Post() {
 						)}
 					</div>
 					<div className="footer">
-						{postObject.username}
+						<Link className="namePost" to={`/profile/${postObject.UserId}`}>
+							<strong>{postObject.username}</strong>
+						</Link>
 						{/*control if you are the creator or admin*/}
 						{authState.username === postObject.username || role === 'admin' ? (
 							<button
@@ -149,7 +151,9 @@ function Post() {
 						return (
 							<div key={key} className="comment">
 								<p className="textComment">{comment.commentBody}</p>
-								<label>Posté(e) par : {comment.username}</label>
+								<label>
+									Posté(e) par : <strong>{comment.username}</strong>
+								</label>
 								{authState.username === comment.username || role === 'admin' ? (
 									<button
 										className="deleteBtn"

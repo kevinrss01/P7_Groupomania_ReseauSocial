@@ -1,0 +1,19 @@
+.basicInfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+.listOfPosts {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column-reverse;
+	width: 100%;
+
+	.post {
+		width: 50%;
+	}
+}

@@ -1,0 +1,128 @@
+/* INDIVIDUAL POST */
+.postPage {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-height: 100000000px;
+}
+
+.leftSide {
+	flex: 50%;
+	height: calc(100vh - 70px);
+	display: grid;
+	place-items: center;
+}
+
+.rightSide {
+	flex: 50%;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	display: flex;
+	flex-direction: column;
+
+	.addCommentContainer {
+		max-height: 300px;
+		width: 90%;
+		display: grid;
+		place-items: center;
+		margin-top: 25px;
+		border: 3px solid $couleur_primaire;
+		border-radius: 10px;
+		background-color: darken($color: #fff, $amount: 20%);
+
+		input {
+			border: 2px solid $couleur_primaire;
+			margin-bottom: 10px;
+			width: 300px;
+			font-size: 20px;
+		}
+	}
+}
+
+.rightSide .listOfComments {
+	min-height: 20%;
+	max-height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	margin-top: 20px;
+
+	.comment {
+		width: 70%;
+		height: auto;
+		padding: 0px 30px 0px 30px;
+		border: 2px solid $couleur_primaire;
+		border-radius: 5px;
+		margin: 20px 0px 20px 0px;
+		background-color: darken($color: #fff, $amount: 20%);
+	}
+}
+
+#individual {
+	height: 80%;
+	max-height: 1000px;
+	width: 90%;
+
+	.title,
+	.footer {
+		font-size: 30px;
+		height: 10%;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.bodyIndividual {
+		font-size: 25px;
+
+		.postText {
+			padding: 15px;
+			width: 100%;
+		}
+
+		img {
+			width: 80%;
+			height: 80%;
+			max-width: 600px;
+			min-width: 250px;
+		}
+	}
+}
+
+.post .bodyIndividual {
+	@include flex-centre-colonne;
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+	height: 80%;
+}
+
+.post .bodyIndividual {
+	@include flex-centre-colonne;
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+	height: 80%;
+}
+
+.textComment {
+	font-size: 20px;
+	text-align: center;
+	margin: 30px;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 15px;
+	overflow: scroll;
+}
+
+@media all and (max-width: 1500px) {
+	.postPage {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}

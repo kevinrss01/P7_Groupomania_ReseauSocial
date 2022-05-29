@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'; //For redirection
-import { AuthContext } from '../helpers/AuthContext';
+import { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom'; //For redirection
+// import { AuthContext } from '../helpers/AuthContext';
 
 function Home() {
 	const [listOfPosts, setListOfPosts] = useState([]);
 
-	const { authState } = useContext(AuthContext);
+	// const { authState } = useContext(AuthContext);
 	let navigate = useNavigate();
 
 	//If not connected redirect to home page
@@ -25,34 +25,28 @@ function Home() {
 		<div className="posts">
 			{listOfPosts.map((value, key) => {
 				return (
-					<div>
-						<div
-							key={key}
-							className="post"
-							onClick={() => {
-								navigate(`/post/${value.id}`);
-							}}
-						>
+					<div className="postsContainer">
+						<div key={key} className="post">
 							<div className="title"> {value.title} </div>
-							<div className="body">
-								<div>{value.postText}</div>
-								{value.image != 'undefined' && (
+							<div
+								className="body"
+								onClick={() => {
+									navigate(`/post/${value.id}`);
+								}}
+							>
+								<div className="postText">{value.postText}</div>
+								{value.image !== 'undefined' && (
 									<img
 										src={`http://localhost:3002/${value.image}`}
 										alt={value.image}
 									/>
 								)}
 							</div>
-						</div>
-						<div className="footer">
-							<p>Posté(e) par : </p>
-							<div
-								onClick={() => {
-									navigate(`/profile/${value.UserId}`);
-								}}
-								className="namePost"
-							>
-								<strong>{value.username}</strong>
+							<div className="footer">
+								<p>Posté(e) par : </p>
+								<Link className="namePost" to={`/profile/${value.UserId}`}>
+									<strong>{value.username}</strong>
+								</Link>
 							</div>
 						</div>
 					</div>

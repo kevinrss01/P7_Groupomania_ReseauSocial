@@ -1,0 +1,109 @@
+/* Button logout */
+.navbar button {
+	width: 150px;
+	text-decoration: 40px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.navbar button:hover {
+	color: red;
+}
+
+/* delete button */
+
+.deleteAccountButton {
+	height: 50px;
+	width: 200px;
+}
+
+.deleteAccountButton:hover {
+	background-color: red;
+	color: white;
+}
+
+.deleteBtn span {
+	color: red;
+	font-size: 15px;
+}
+
+.listOfComments .comment .deleteBtn {
+	height: 40px;
+	width: 100px;
+	@include margin-button;
+}
+
+.deleteBtn:hover > span {
+	color: white;
+}
+
+.deleteBtn:hover {
+	background-color: red;
+}
+
+.footer button {
+	color: red;
+	margin: 10px;
+}
+
+.footer button:hover {
+	background-color: red;
+	color: white;
+}
+
+/*Button Image*/
+
+.containerImageUpload #customButton {
+	@include flex-centre;
+	margin: 0px;
+
+	p {
+		margin-right: 5px;
+	}
+
+	span {
+		color: white;
+	}
+}
+
+/* button create comment/post */
+
+.formContainer button {
+	margin-top: 15px;
+	height: 40px;
+	border: none;
+	background-color: lightskyblue;
+	border-radius: 5px;
+	color: white;
+	font-size: 15px;
+}
+
+.formContainer button:hover {
+	cursor: pointer;
+	background-color: $couleur_primaire;
+}
+
+.addCommentContainer input,
+button {
+	width: 200px;
+	height: 50px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+}
+
+.addCommentContainer button {
+	background-color: lightskyblue;
+	font-size: 18px;
+	color: white;
+	@include margin-button;
+}
+
+.addCommentContainer button:hover {
+	background-color: $couleur_primaire;
+}
+
+.loginContainer button {
+	background-color: $couleur_primaire;
+	color: white;
+}

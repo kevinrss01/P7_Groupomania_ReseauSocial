@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-// import { validationSchema } from '../Validations/CreatePost.validation';
-import * as Yup from 'yup';
 
 function CreatePost() {
 	let navigate = useNavigate();
@@ -39,7 +37,7 @@ function CreatePost() {
 		formData.append('title', title);
 		formData.append('postText', postText);
 
-		if (title != '' && postText != '') {
+		if (title !== '' && postText !== '') {
 			axios
 				.post('http://localhost:3002/posts', formData, {
 					headers: { accessToken: localStorage.getItem('accessToken') },
@@ -113,7 +111,9 @@ function CreatePost() {
 						<p>Ajouter une image</p>
 						<span className="material-icons">add_photo_alternate</span>
 					</button>
-					<span id="customText">Pas d'image ajoutée</span>
+					<div className="customText">
+						<span id="customText">Pas d'image ajoutée</span>
+					</div>
 				</div>
 				<button onClick={onSubmit}> Publier</button>
 			</div>

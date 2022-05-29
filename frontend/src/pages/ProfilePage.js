@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function ProfilePage() {
 	let { id } = useParams();
 	const [username, setUsername] = useState('');
-	const [role, setRole] = useState('');
+	// const [role, setRole] = useState('');
 
 	const [listOfPosts, setListOfPost] = useState([]);
 	let navigate = useNavigate();
@@ -14,7 +14,6 @@ function ProfilePage() {
 	useEffect(() => {
 		axios.get(`http://localhost:3002/auth/basicinfo/${id}`).then((response) => {
 			setUsername(response.data.username);
-			setRole(response.data.role);
 		});
 
 		axios.get(`http://localhost:3002/posts/byuserid/${id}`).then((response) => {
@@ -38,7 +37,15 @@ function ProfilePage() {
 								}}
 							>
 								<div className="title"> {value.title} </div>
-								<div className="body">{value.postText}</div>
+								<div className="body">
+									{value.postText}
+									{value.image !== 'undefined' && (
+										<img
+											src={`http://localhost:3002/${value.image}`}
+											alt={value.image}
+										/>
+									)}
+								</div>
 								<div className="footer">{value.username}</div>
 							</div>
 						);

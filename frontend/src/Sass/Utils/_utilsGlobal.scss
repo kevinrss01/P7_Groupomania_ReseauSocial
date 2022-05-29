@@ -1,0 +1,18 @@
+$couleur_primaire: #1e90ff;
+
+@mixin flex-centre {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin margin-button {
+	margin: 15px;
+}
+
+@mixin flex-centre-colonne {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

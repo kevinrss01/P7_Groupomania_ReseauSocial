@@ -1,4 +1,4 @@
-import './App.css';
+import '../src/CSS/main.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; //Routes = Switch
@@ -13,6 +13,7 @@ import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Parameters from './pages/Parameters';
+import logoGroupomania from './Images/icon-left-font-monochrome-white.png';
 
 //ROUTES "pages"
 //NAVBAR AND LINKS
@@ -82,6 +83,10 @@ function App() {
 								</div>
 							</>
 						)}
+						<div className="img">
+							<img src={logoGroupomania} />
+						</div>
+
 						{authState.status && (
 							<>
 								<div className="navbarRight">

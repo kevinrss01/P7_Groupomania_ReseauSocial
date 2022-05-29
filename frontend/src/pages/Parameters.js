@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../helpers/AuthContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Parameters() {
 	// let askQuestion = false;
@@ -14,11 +14,25 @@ function Parameters() {
 	// };
 
 	const { authState } = useContext(AuthContext);
-	const [username, setUsername] = useState('');
-	const [role, setRole] = useState('');
+	// const [username, setUsername] = useState('');
+	// const [role, setRole] = useState('');
+	const [confirmation, setConfirmation] = useState({
+		show: false,
+	});
 
 	let navigate = useNavigate();
 
+	const showQuestion = () => {
+		setConfirmation({
+			show: true,
+		});
+	};
+
+	const hideQuestion = () => {
+		setConfirmation({
+			show: false,
+		});
+	};
 	//DELETE ACCOUNT
 	const deleteAccount = (id) => {
 		axios
@@ -50,29 +64,33 @@ function Parameters() {
 			</div>
 
 			<body className="bodyParameters">
-				{/* {askQuestion ? (
+				{confirmation.show === true && (
 					<>
 						<div className="deleteConfirmation">
 							<div className="deleteQuestion">
 								<p>Voulez-vous vraiment supprimer votre compte ?</p>
 							</div>
 							<div className="YesOrNo">
-								<button className="yes">OUI</button>
-								<button className="no">NON</button>
+								<button
+									className="yes"
+									onClick={() => {
+										deleteAccount(authState.id);
+									}}
+								>
+									OUI
+								</button>
+								<button className="no" onClick={hideQuestion}>
+									NON
+								</button>
 							</div>
 						</div>
 					</>
-				) : (
-					<></>
-				)} */}
-				<button
-					className="deleteAccountButton"
-					onClick={() => {
-						deleteAccount(authState.id);
-					}}
-				>
-					<strong>Supprimer mon compte</strong>
-				</button>
+				)}
+				{confirmation.show === false && (
+					<button className="deleteAccountButton" onClick={showQuestion}>
+						<strong>Supprimer mon compte</strong>
+					</button>
+				)}
 			</body>
 		</div>
 	);

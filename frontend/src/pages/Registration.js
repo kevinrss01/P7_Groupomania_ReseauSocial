@@ -1,10 +1,9 @@
 import React from 'react';
-import { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'; //  for the form
 import * as Yup from 'yup'; //For the form validation
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../helpers/AuthContext';
+// import { AuthContext } from '../helpers/AuthContext';
 
 function Registration() {
 	const initialValues = {
@@ -12,7 +11,7 @@ function Registration() {
 		password: '',
 	};
 
-	const { setAuthState } = useContext(AuthContext);
+	// const { setAuthState } = useContext(AuthContext);
 
 	//CONTROLE INPUT
 	const validationSchema = Yup.object().shape({
@@ -41,7 +40,7 @@ function Registration() {
 				validationSchema={validationSchema}
 			>
 				<Form className="formCreateUserContainer">
-					<label>Nom d'utilisateur </label>
+					<label>Nom d'utilisateur :</label>
 					<ErrorMessage name="username" component="span" />
 					<Field
 						autoComplete="off"
@@ -49,8 +48,8 @@ function Registration() {
 						name="username"
 						placeholder="Nom d'utilisateur"
 					/>
-					<label>Mot de passe </label>
-					<ErrorMessage name="username" component="span" />
+					<label>Mot de passe :</label>
+					<ErrorMessage name="password" component="span" />
 					<Field
 						type="password"
 						id="inputPassword"
