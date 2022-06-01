@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Users } = require('../models');
 const { Posts } = require('../models');
+const { Likes } = require('../models');
 const bcrypt = require('bcrypt');
 const { validateToken } = require('../middlewares/AuthMiddlewares');
 const { sign } = require('jsonwebtoken');
@@ -22,6 +23,7 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
 	const { username, password } = req.body;
 	const user = await Users.findOne({ where: { username: username } }); //Check username
+	// const ListOfLikesByUser = await Likes.findAll({ where: { UserID: user.id } });
 
 	if (user)
 		//bcrypt.compare(passwordInTheInput, passwordInTheDataBase)
@@ -46,7 +48,6 @@ router.post('/login', async (req, res) => {
 	}
 });
 
-//À quoi sa sert ?
 //auth request
 router.get('/auth', validateToken, (req, res) => {
 	res.json(req.user);

@@ -26,8 +26,8 @@
 }
 
 .navbar img {
-	height: 70px;
-	width: 250px;
+	height: auto;
+	width: 260px;
 }
 
 .navbar .connectAndRegister a:hover {
@@ -116,6 +116,29 @@
 	svg:hover {
 		background-color: white;
 		color: $couleur_primaire;
+	}
+}
+
+.btnResponsive2 {
+	// reset to default
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	letter-spacing: inherit;
+	color: inherit;
+	font-size: inherit;
+	text-align: inherit;
+	padding: 0;
+	color: white;
+	@include flex-centre;
+	svg {
+		font-size: 50px;
+		border-radius: 30px;
+	}
+
+	svg:hover {
+		color: darken($color: #ff0000, $amount: 5%);
 	}
 }
 

@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Parameters from './pages/Parameters';
 import logoGroupomania from './Images/icon-left-font-monochrome-white.png';
-import { AiOutlineCloseSquare } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import { BiMenuAltRight } from 'react-icons/bi';
 
 //ROUTES "pages"
@@ -26,6 +26,7 @@ function App() {
 		id: 0,
 		role: '',
 		status: false,
+		postsLiked: [],
 	});
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
@@ -73,6 +74,14 @@ function App() {
 		);
 	};
 
+	const ButtonClose = () => {
+		return (
+			<button className="btnResponsive2" onClick={menuToggler}>
+				<AiOutlineClose />
+			</button>
+		);
+	};
+
 	return (
 		<div className="App">
 			<AuthContext.Provider value={{ authState, setAuthState }}>
@@ -99,7 +108,8 @@ function App() {
 							<img src={logoGroupomania} />
 						</Link>
 						{/*BUTTON RESPOSIVE*/}
-						<Button />
+						{menuOpen ? <ButtonClose /> : <Button />}
+
 						{authState.status && (
 							<>
 								<div className="navbarRight">

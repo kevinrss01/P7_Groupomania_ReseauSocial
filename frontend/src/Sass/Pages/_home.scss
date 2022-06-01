@@ -15,9 +15,11 @@
 
 .post {
 	width: 60%;
-	height: 600px;
+	height: auto;
+	min-height: 300px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	margin-top: 50px;
 	border: 1px solid lightgray;
 	font-family: Arial, Helvetica, sans-serif;
@@ -26,9 +28,9 @@
 
 	.title {
 		border-radius: 10px 10px 0px 0px;
-		height: 15%;
+		height: 50px;
 		border-bottom: 1px solid lightgray;
-		background-color: $couleur_primaire;
+		background-color: $couleur_tertiaire;
 		display: grid;
 		place-content: center;
 		color: white;
@@ -38,18 +40,22 @@
 	.body {
 		@include flex-centre-colonne;
 		font-size: 25px;
+		min-height: 200px;
+		width: 100%;
 		font-style: italic;
 		text-align: center;
-		height: 80%;
 
 		.postText {
 			padding: 15px;
 		}
 		img {
 			width: 80%;
-			height: 80%;
+			height: auto;
 			max-width: 600px;
-			min-width: 200px;
+			min-width: 180px;
+			margin-bottom: 15px;
+			border-radius: 15px;
+			border: 1px solid grey;
 		}
 	}
 }
@@ -63,9 +69,10 @@
 	height: 20%;
 	border-top: 1px solid lightgray;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	padding-left: 15px;
-	background-color: $couleur_primaire;
+	background-color: $couleur_tertiaire;
 	color: white;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -73,7 +80,7 @@
 	.namePost {
 		background: white;
 		height: 40px;
-		width: 170px;
+		width: auto;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -82,11 +89,13 @@
 		cursor: pointer;
 		font-size: 17px;
 		text-decoration: none;
+		text-align: center;
+		padding: 3px;
+		margin: 5px;
 	}
 
 	p {
 		font-size: 20px;
-		margin-right: 10px;
 	}
 
 	.namePost:hover {
@@ -94,18 +103,52 @@
 		background-color: $couleur_primaire;
 		border: 2px solid white;
 	}
+
+	.postBy {
+		@include flex-centre;
+	}
+
+	.likePost {
+		font-size: 30px;
+		margin: 10px;
+		color: white;
+	}
+
+	.unlikePost {
+		font-size: 30px;
+		margin: 10px;
+		color: red;
+	}
+
+	.comments {
+		font-size: 30px;
+		margin: 10px;
+		color: white;
+	}
+
+	.unlikePost:hover,
+	.likePost:hover {
+		font-size: 35px;
+	}
+
+	label {
+		font-size: 20px;
+	}
+
+	.likes {
+		@include flex-centre;
+		padding: 0px 20px 0px 20px;
+	}
 }
 
 @media all and (max-width: 1100px) {
 	.footer {
 		p {
 			font-size: 15px;
-			overflow-wrap: break-word;
 		}
 
 		.namePost {
-			width: 100px;
-			overflow: hidden;
+			width: auto;
 		}
 	}
 }

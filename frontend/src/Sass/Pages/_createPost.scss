@@ -19,6 +19,13 @@
 		border: 5px solid $couleur_primaire;
 		border-radius: 5px;
 
+		h1 {
+			background-color: darken($color: #fff, $amount: 20%);
+			border-radius: 10px;
+			padding: 5px;
+			text-align: center;
+		}
+
 		label {
 			font-size: 20px;
 			margin-bottom: 6px;

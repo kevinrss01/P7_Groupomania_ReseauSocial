@@ -18,6 +18,9 @@ app.use('/comments', commentsRouter);
 //USERS|AUTH
 const usersRouter = require('./routes/Users.routes');
 app.use('/auth', usersRouter);
+//LIKES
+const likesRouter = require('./routes/Likes.routes');
+app.use('/likes', likesRouter);
 
 //Static Images Folder
 app.use('/Images', express.static('./Images'));

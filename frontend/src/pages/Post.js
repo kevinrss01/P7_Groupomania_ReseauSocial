@@ -2,25 +2,37 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom'; //useNavigate === useHistory
 import axios from 'axios';
 import { AuthContext } from '../helpers/AuthContext';
-// import Image from '/Images';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function Post() {
 	let { id } = useParams();
-	const [postObject, setPostObject] = useState({});
+	const [postObject, setPostObject] = useState([]);
+	const [listOfPosts, setListOfPosts] = useState([]);
 	const [comments, setComments] = useState([]); //HOLD THE VALUE FOR THE INPUT
 	const [newComment, setNewComment] = useState('');
 	const { authState } = useContext(AuthContext);
 	const [role, setRole] = useState('');
+	const [likedPosts, setLikedPosts] = useState([]);
+
 	let navigate = useNavigate();
 
 	useEffect(() => {
 		axios.get(`http://localhost:3002/posts/byId/${id}`).then((response) => {
 			setPostObject(response.data);
+			setLikedPosts(response.data.Likes);
 			console.log(response.data);
 		});
 		axios.get(`http://localhost:3002/comments/${id}`).then((response) => {
 			setComments(response.data);
 		});
+		axios
+			.get('http://localhost:3002/posts', {
+				headers: { accessToken: localStorage.getItem('accessToken') },
+			})
+			.then((response) => {
+				setListOfPosts(response.data.listOfPosts);
+			});
 	}, [id]);
 
 	//button create comment
@@ -86,6 +98,45 @@ function Post() {
 			setRole(response.data.role);
 		});
 
+	// Object.keys(postObject).map((x) => console.log(x));
+	//LIKE POST
+	const likeAPost = (postId) => {
+		if (localStorage.getItem(`${authState.username}Liked${postId}`)) {
+			localStorage.removeItem(`${authState.username}Liked${postId}`);
+		} else {
+			localStorage.setItem(`${authState.username}Liked${postId}`, postId);
+		}
+		axios
+			.post(
+				'http://localhost:3002/likes',
+				{ PostId: postId },
+				{ headers: { accessToken: localStorage.getItem('accessToken') } }
+			)
+			.then((response) => {
+				// console.log(response.data.liked);
+				// console.log(postObject);
+				// Object.entries(postObject).map((x) => console.log(x));
+				setListOfPosts(
+					listOfPosts.map((post) => {
+						if (post.id === postId) {
+							if (response.data.liked) {
+								// console.log('like');
+								return { ...post, Likes: [...post.Likes, 0] };
+							} else {
+								// console.log('dislike');
+								const likesArray = post.Likes;
+								likesArray.pop();
+								return { ...post, Likes: likesArray };
+							}
+						} else {
+							console.log('post.id === postId is FALSE');
+							return post;
+						}
+					})
+				);
+			});
+	};
+
 	return (
 		<div className="postPage">
 			<div className="leftSide">
@@ -104,15 +155,32 @@ function Post() {
 						<Link className="namePost" to={`/profile/${postObject.UserId}`}>
 							<strong>{postObject.username}</strong>
 						</Link>
+						<FontAwesomeIcon
+							onClick={() => {
+								likeAPost(postObject.id);
+							}}
+							icon={faHeart}
+							className={
+								localStorage.getItem(
+									`${authState.username}Liked${postObject.id}`
+								)
+									? 'unlikePost'
+									: 'likePost'
+							}
+						></FontAwesomeIcon>
+
 						{/*control if you are the creator or admin*/}
 						{authState.username === postObject.username || role === 'admin' ? (
-							<button
-								onClick={() => {
-									deletePost(postObject.id);
-								}}
-							>
-								<strong>Supprimer le poste</strong>
-							</button>
+							<>
+								{/* <label>{likedPosts.length}</label> */}
+								<button
+									onClick={() => {
+										deletePost(postObject.id);
+									}}
+								>
+									<strong>Supprimer le poste</strong>
+								</button>
+							</>
 						) : (
 							<></>
 						)}

@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	Users.associate = (models) => {
-		Users.hasMany(models.Posts, {
-			onDelete: 'CASCADE', //For delete all contents of the user
+		Users.hasMany(models.Likes, {
+			onDelete: 'cascade',
 		});
 	};
 	return Users;

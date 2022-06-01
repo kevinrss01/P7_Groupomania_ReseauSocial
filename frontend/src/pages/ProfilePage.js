@@ -38,7 +38,7 @@ function ProfilePage() {
 							>
 								<div className="title"> {value.title} </div>
 								<div className="body">
-									{value.postText}
+									<p>{value.postText}</p>
 									{value.image !== 'undefined' && (
 										<img
 											src={`http://localhost:3002/${value.image}`}

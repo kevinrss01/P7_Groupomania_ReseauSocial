@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap");
 .App {
   width: 100vw;
   height: auto;
@@ -8,11 +9,15 @@ body {
   padding: 0;
 }
 
+* {
+  font-family: 'Lato', sans-serif;
+}
+
 /* NAVBAR */
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: #1e90ff;
+  background-color: #fd2d01;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,8 +38,8 @@ body {
 }
 
 .navbar img {
-  height: 70px;
-  width: 250px;
+  height: auto;
+  width: 260px;
 }
 
 .navbar .connectAndRegister a:hover {
@@ -93,7 +98,7 @@ body {
 #navbarResponsive .loginRegistration a,
 #navbarResponsive .createPost a,
 #navbarResponsive .params a {
-  background-color: rgba(30, 144, 255, 0.6);
+  background-color: rgba(253, 45, 1, 0.6);
   width: 100%;
   height: 60px;
   display: flex;
@@ -110,7 +115,7 @@ body {
 #navbarResponsive .loginRegistration a:hover,
 #navbarResponsive .createPost a:hover,
 #navbarResponsive .params a:hover {
-  background-color: #1e90ff;
+  background-color: #fd2d01;
 }
 
 #navbarResponsive .loginRegistration .gearIcon,
@@ -142,7 +147,32 @@ body {
 
 .btnResponsive svg:hover {
   background-color: white;
-  color: #1e90ff;
+  color: #fd2d01;
+}
+
+.btnResponsive2 {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  letter-spacing: inherit;
+  color: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  padding: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnResponsive2 svg {
+  font-size: 50px;
+  border-radius: 30px;
+}
+
+.btnResponsive2 svg:hover {
+  color: #e60000;
 }
 
 .btnResponsive:hover {
@@ -182,8 +212,15 @@ body {
   width: 50%;
   height: 70%;
   padding: 20px;
-  border: 5px solid #1e90ff;
+  border: 5px solid #fd2d01;
   border-radius: 5px;
+}
+
+.createPostPage .formContainer h1 {
+  background-color: #cccccc;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
 }
 
 .createPostPage .formContainer label {
@@ -263,9 +300,11 @@ span {
 
 .post {
   width: 60%;
-  height: 600px;
+  height: auto;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
@@ -275,9 +314,9 @@ span {
 
 .post .title {
   border-radius: 10px 10px 0px 0px;
-  height: 15%;
+  height: 50px;
   border-bottom: 1px solid lightgray;
-  background-color: #1e90ff;
+  background-color: #4e5166;
   display: grid;
   place-content: center;
   color: white;
@@ -290,9 +329,10 @@ span {
   align-items: center;
   flex-direction: column;
   font-size: 25px;
+  min-height: 200px;
+  width: 100%;
   font-style: italic;
   text-align: center;
-  height: 80%;
 }
 
 .post .body .postText {
@@ -301,9 +341,12 @@ span {
 
 .post .body img {
   width: 80%;
-  height: 80%;
+  height: auto;
   max-width: 600px;
-  min-width: 200px;
+  min-width: 180px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  border: 1px solid grey;
 }
 
 .post:hover {
@@ -315,9 +358,10 @@ span {
   height: 20%;
   border-top: 1px solid lightgray;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-left: 15px;
-  background-color: #1e90ff;
+  background-color: #4e5166;
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -326,7 +370,7 @@ span {
 .footer .namePost {
   background: white;
   height: 40px;
-  width: 170px;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -335,27 +379,67 @@ span {
   cursor: pointer;
   font-size: 17px;
   text-decoration: none;
+  text-align: center;
+  padding: 3px;
+  margin: 5px;
 }
 
 .footer p {
   font-size: 20px;
-  margin-right: 10px;
 }
 
 .footer .namePost:hover {
   color: white;
-  background-color: #1e90ff;
+  background-color: #fd2d01;
   border: 2px solid white;
+}
+
+.footer .postBy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .likePost {
+  font-size: 30px;
+  margin: 10px;
+  color: white;
+}
+
+.footer .unlikePost {
+  font-size: 30px;
+  margin: 10px;
+  color: red;
+}
+
+.footer .comments {
+  font-size: 30px;
+  margin: 10px;
+  color: white;
+}
+
+.footer .unlikePost:hover,
+.footer .likePost:hover {
+  font-size: 35px;
+}
+
+.footer label {
+  font-size: 20px;
+}
+
+.footer .likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
 }
 
 @media all and (max-width: 1100px) {
   .footer p {
     font-size: 15px;
-    overflow-wrap: break-word;
   }
   .footer .namePost {
-    width: 100px;
-    overflow: hidden;
+    width: auto;
   }
 }
 
@@ -379,7 +463,7 @@ span {
   border: none;
   margin: 10px;
   font-size: 20px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #fd2d01;
   font-size: 20px;
 }
 
@@ -407,7 +491,7 @@ span {
   width: 50%;
   height: auto;
   padding: 20px;
-  border: 5px solid #1e90ff;
+  border: 5px solid #fd2d01;
   border-radius: 5px;
 }
 
@@ -436,10 +520,15 @@ span {
   align-items: center;
   flex-direction: column-reverse;
   width: 100%;
+  height: auto;
 }
 
 .listOfPosts .post {
-  width: 50%;
+  width: 70%;
+}
+
+.listOfPosts .footer {
+  height: 50px;
 }
 
 h3 {
@@ -546,13 +635,13 @@ h3 {
   display: grid;
   place-items: center;
   margin-top: 25px;
-  border: 3px solid #1e90ff;
+  border: 3px solid #fd2d01;
   border-radius: 10px;
   background-color: #cccccc;
 }
 
 .rightSide .addCommentContainer input {
-  border: 2px solid #1e90ff;
+  border: 2px solid #fd2d01;
   margin-bottom: 10px;
   width: 300px;
   font-size: 20px;
@@ -572,27 +661,32 @@ h3 {
   width: 70%;
   height: auto;
   padding: 0px 30px 0px 30px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #fd2d01;
   border-radius: 5px;
   margin: 20px 0px 20px 0px;
   background-color: #cccccc;
 }
 
 #individual {
-  height: 80%;
+  height: auto;
   max-height: 1000px;
   width: 90%;
 }
 
-#individual .title,
-#individual .footer {
-  font-size: 30px;
-  height: 10%;
+#individual .title {
+  height: 50px;
 }
 
 #individual .footer {
   display: flex;
   justify-content: space-between;
+  font-size: 30px;
+}
+
+#individual .footer .likeAndDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #individual .bodyIndividual {
@@ -606,9 +700,12 @@ h3 {
 
 #individual .bodyIndividual img {
   width: 80%;
-  height: 80%;
+  height: auto;
   max-width: 600px;
   min-width: 250px;
+  border-radius: 15px;
+  border: 1px solid grey;
+  margin-bottom: 15px;
 }
 
 .post .bodyIndividual {
@@ -654,7 +751,7 @@ h3 {
 button,
 a,
 svg {
-  transition: 0.4s ease background-color, 0.4s ease color, 0.3s ease border-bottom;
+  transition: 0.4s ease background-color, 0.4s ease color, 0.3s ease border-bottom, 0.3s ease font-size;
 }
 
 .navbar a button,
@@ -668,6 +765,7 @@ svg {
 .navbar a button:hover,
 .params a button:hover {
   color: red;
+  font-size: 20px;
 }
 
 /* delete button */
@@ -739,7 +837,7 @@ svg {
 
 .formContainer button:hover {
   cursor: pointer;
-  background-color: #1e90ff;
+  background-color: #fd2d01;
 }
 
 .addCommentContainer input,
@@ -759,11 +857,11 @@ button {
 }
 
 .addCommentContainer button:hover {
-  background-color: #1e90ff;
+  background-color: #fd2d01;
 }
 
 .loginContainer button {
-  background-color: #1e90ff;
+  background-color: #fd2d01;
   color: white;
 }
 /*# sourceMappingURL=main.css.map */

@@ -62,19 +62,22 @@
 }
 
 #individual {
-	height: 80%;
+	height: auto;
 	max-height: 1000px;
 	width: 90%;
 
-	.title,
-	.footer {
-		font-size: 30px;
-		height: 10%;
+	.title {
+		height: 50px;
 	}
 
 	.footer {
 		display: flex;
 		justify-content: space-between;
+		font-size: 30px;
+
+		.likeAndDelete {
+			@include flex-centre;
+		}
 	}
 
 	.bodyIndividual {
@@ -87,9 +90,12 @@
 
 		img {
 			width: 80%;
-			height: 80%;
+			height: auto;
 			max-width: 600px;
 			min-width: 250px;
+			border-radius: 15px;
+			border: 1px solid grey;
+			margin-bottom: 15px;
 		}
 	}
 }
