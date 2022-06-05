@@ -10,13 +10,18 @@ const { sign } = require('jsonwebtoken');
 //REGISTRATION
 router.post('/', async (req, res) => {
 	const { username, password } = req.body;
-	bcrypt.hash(password, 10).then((hash) => {
-		Users.create({
-			username: username,
-			password: hash,
+	const findUser = await Users.findOne({ where: { username: username } });
+	if (findUser) {
+		res.json({ error: "Nom d'utilisateur déja pris" });
+	} else {
+		bcrypt.hash(password, 10).then((hash) => {
+			Users.create({
+				username: username,
+				password: hash,
+			});
+			res.json('User registered');
 		});
-		res.json('SUCCESS');
-	});
+	}
 });
 
 ////LOGIN/////

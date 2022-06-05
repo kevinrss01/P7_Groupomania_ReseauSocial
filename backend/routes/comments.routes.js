@@ -19,6 +19,7 @@ router.post('/', validateToken, async (req, res) => {
 	res.json(newComment);
 });
 
+//DELETE COMMENT
 router.delete('/:commentId', validateToken, async (req, res) => {
 	const commentId = req.params.commentId;
 
@@ -30,4 +31,14 @@ router.delete('/:commentId', validateToken, async (req, res) => {
 
 	res.json('DELETED SUCCESSFULLY');
 });
+
+//UPDATE COMMENT
+router.put('/:id', validateToken, async (req, res) => {
+	const id = req.params.id;
+	const commentBody = req.body.commentBody;
+	await Comments.update({ commentBody: commentBody }, { where: { id: id } });
+
+	res.json('Comment Update !');
+});
+
 module.exports = router;

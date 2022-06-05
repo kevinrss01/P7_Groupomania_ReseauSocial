@@ -1,35 +1,52 @@
-import React from 'react';
+import { React, useState, useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'; //  for the form
 import * as Yup from 'yup'; //For the form validation
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../helpers/AuthContext';
+import { AuthContext } from '../helpers/AuthContext';
 
 function Registration() {
 	const initialValues = {
 		username: '',
 		password: '',
 	};
-
-	// const { setAuthState } = useContext(AuthContext);
+	let navigate = useNavigate();
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
+	const { setAuthState } = useContext(AuthContext);
 
 	//CONTROLE INPUT
 	const validationSchema = Yup.object().shape({
 		username: Yup.string()
-			.min(3)
-			.max(15)
+			.min(3, "Nom d'utilisateur trop court")
+			.max(15, "Le nom d'utilisateur ne peut contenir que 15 caractères")
 			.required("Nom d'utilisateur obligatoire"),
-		password: Yup.string().min(4).max(20).required('Mot de passe obligatoire'),
+		password: Yup.string()
+			.min(4, 'Mot de passe trop court')
+			.max(20, 'Mot de passe trop long')
+			.required('Mot de passe obligatoire'),
 	});
 
 	const onSubmit = (data) => {
-		axios.post('http://localhost:3002/auth', data).then(() => {
-			console.log(data);
-			navigate('/login');
+		axios.post('http://localhost:3002/auth', data).then((response) => {
+			if (response.data.error) {
+				console.log('username already taken');
+				setShowErrorMessage(true);
+			} else {
+				console.log('user created');
+				axios
+					.post('http://localhost:3002/auth/login', data)
+					.then((response) => {
+						localStorage.setItem('accessToken', response.data.token);
+						setAuthState({
+							username: response.data.username,
+							id: response.data.id,
+							status: true,
+						});
+						navigate('/');
+					});
+			}
 		});
 	};
-
-	let navigate = useNavigate();
 
 	return (
 		<div className="registrationContainer">
@@ -41,6 +58,12 @@ function Registration() {
 			>
 				<Form className="formCreateUserContainer">
 					<label>Nom d'utilisateur :</label>
+					{showErrorMessage && (
+						<label className="errorMessage">
+							Nom d'utilisateur déja pris, veuillez en choisir un autre.
+						</label>
+					)}
+
 					<ErrorMessage name="username" component="span" />
 					<Field
 						autoComplete="off"
@@ -57,7 +80,9 @@ function Registration() {
 						placeholder="Mot de passe"
 					/>
 
-					<button type="submit"> Créer mon compte</button>
+					<button type="submit" className="registrationBtn">
+						Créer mon compte
+					</button>
 				</Form>
 			</Formik>
 		</div>

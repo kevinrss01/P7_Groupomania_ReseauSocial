@@ -24,7 +24,10 @@ router.get('/byId/:id', async (req, res) => {
 //GET ALL POST OF ONE USER
 router.get('/byuserId/:id', async (req, res) => {
 	const id = req.params.id;
-	const listOfPosts = await Posts.findAll({ where: { UserID: id } });
+	const listOfPosts = await Posts.findAll({
+		where: { userId: id },
+		include: [Comments, Likes],
+	});
 	res.json(listOfPosts);
 });
 
@@ -82,6 +85,16 @@ router.delete('/:postId', validateToken, async (req, res) => {
 	});
 
 	res.json('DELETED SUCCESSFULLY');
+});
+
+//UPDATE POST
+router.put('/:postId', validateToken, async (req, res) => {
+	const post = req.body;
+	const id = req.params.postId;
+	const postText = req.body.postText;
+	await Posts.update({ postText: postText }, { where: { id: id } });
+
+	res.json(post);
 });
 
 //DELETE ALL POSTS OF ONE USER

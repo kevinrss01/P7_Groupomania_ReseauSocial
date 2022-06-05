@@ -7,6 +7,7 @@
 }
 
 .leftSide {
+	padding: 25px 0px 15px 0px;
 	flex: 50%;
 	height: calc(100vh - 70px);
 	display: grid;
@@ -28,15 +29,19 @@
 		display: grid;
 		place-items: center;
 		margin-top: 25px;
-		border: 3px solid $couleur_primaire;
+		border: 3px solid $couleur_tertiaire;
 		border-radius: 10px;
-		background-color: darken($color: #fff, $amount: 20%);
+		background-color: $couleur_primaire;
 
 		input {
 			border: 2px solid $couleur_primaire;
 			margin-bottom: 10px;
 			width: 300px;
 			font-size: 20px;
+		}
+
+		h1 {
+			color: white;
 		}
 	}
 }
@@ -57,7 +62,10 @@
 		border: 2px solid $couleur_primaire;
 		border-radius: 5px;
 		margin: 20px 0px 20px 0px;
-		background-color: darken($color: #fff, $amount: 20%);
+		background-color: $couleur-tertiaire;
+		.textComment {
+			margin: 15px;
+		}
 	}
 }
 
@@ -98,6 +106,22 @@
 			margin-bottom: 15px;
 		}
 	}
+
+	.updatePost {
+		width: 100%;
+		@include flex-centre;
+	}
+
+	input {
+		width: 40%;
+		height: 40px;
+		font-size: 20px;
+		margin: 10px;
+	}
+
+	.valid {
+		font-size: 40px;
+	}
 }
 
 .post .bodyIndividual {
@@ -124,11 +148,38 @@
 	border-radius: 10px;
 	padding: 15px;
 	overflow-wrap: break-word;
+
+	.inputUpdateComment {
+		width: 50%;
+		height: 40px;
+		font-size: 20px;
+	}
 }
 
-@media all and (max-width: 1500px) {
+.footerComment {
+	@include flex-centre;
+}
+
+label strong {
+	font-size: 17px;
+}
+
+label {
+	color: white;
+}
+
+@media all and (max-width: 1100px) {
 	.postPage {
+		flex-direction: column;
 		display: flex;
 		flex-wrap: wrap;
+	}
+
+	.leftSide {
+		margin: 100px 0px 100px 0px;
+	}
+
+	.newCommentBtn {
+		width: 100px;
 	}
 }

@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			unique: true,
 		},
 		password: {
 			type: DataTypes.STRING,
@@ -16,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
 
 	Users.associate = (models) => {
 		Users.hasMany(models.Likes, {
+			onDelete: 'cascade',
+		});
+
+		Users.hasMany(models.Posts, {
 			onDelete: 'cascade',
 		});
 	};

@@ -8,6 +8,7 @@
 	justify-content: space-between;
 	align-items: center;
 	font-family: Arial, Helvetica, sans-serif;
+
 	// position: fixed;
 	// z-index: 1000;
 }
@@ -16,7 +17,7 @@
 	margin: 0px 10px 0px 10px;
 	text-decoration: none;
 	color: white;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .navbar .img {
@@ -148,7 +149,8 @@
 
 @media all and (min-width: 1100px) {
 	#navbarResponsive,
-	.btnResponsive {
+	.btnResponsive,
+	.btnResponsive2 {
 		display: none;
 	}
 }

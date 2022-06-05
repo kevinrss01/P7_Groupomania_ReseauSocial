@@ -48,7 +48,9 @@ function Login() {
 			/>
 			<span>{errorMessage}</span>
 
-			<button onClick={login}> Se connecter</button>
+			<button onClick={login} className="loginBtn">
+				Se connecter
+			</button>
 		</div>
 	);
 }

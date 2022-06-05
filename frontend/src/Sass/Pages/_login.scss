@@ -6,8 +6,13 @@
 	height: 100vh;
 	padding-top: 100px;
 
+	h1 {
+		font-size: 32px;
+	}
+
 	label {
-		font-size: 20px;
+		font-size: 22px;
+		color: black;
 	}
 
 	input {
@@ -23,10 +28,6 @@
 
 	input[type='text'] {
 		font-family: monospace;
-		font-size: 20px;
-	}
-
-	button {
 		font-size: 20px;
 	}
 }

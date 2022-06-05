@@ -63,7 +63,6 @@ function Home() {
 				{ headers: { accessToken: localStorage.getItem('accessToken') } }
 			)
 			.then((response) => {
-				// console.log(response);
 				setListOfPosts(
 					listOfPosts.map((post) => {
 						if (post.id === postId) {
@@ -117,7 +116,7 @@ function Home() {
 							</div>
 							<div className="footer">
 								<div className="postBy">
-									<p>Posté(e) par : </p>
+									<p className="postByText">Posté(e) par : </p>
 									<Link className="namePost" to={`/profile/${value.UserId}`}>
 										<p>{value.username}</p>
 									</Link>

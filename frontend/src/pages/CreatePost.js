@@ -79,7 +79,7 @@ function CreatePost() {
 			<div className="formContainer">
 				<h1>Créer un poste</h1>
 
-				<label>Titre :</label>
+				<label> Titre :</label>
 				<input
 					type="text"
 					onChange={(event) => {

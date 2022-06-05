@@ -14,21 +14,22 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 50%;
-		height: 70%;
+		height: auto;
 		padding: 20px;
 		border: 5px solid $couleur_primaire;
 		border-radius: 5px;
 
 		h1 {
-			background-color: darken($color: #fff, $amount: 20%);
+			background-color: $couleur_secondaire;
 			border-radius: 10px;
 			padding: 5px;
 			text-align: center;
 		}
 
 		label {
-			font-size: 20px;
+			font-size: 25px;
 			margin-bottom: 6px;
+			color: black;
 		}
 
 		.inputText {
@@ -73,15 +74,15 @@ span {
 }
 
 .customText span {
-	margin: 5px;
+	padding: 10px;
 }
 
-@media all and (max-width: 700px) {
-	#customButton p {
-		display: none;
-	}
-
-	.formContainer {
-		height: 70%;
-	}
+.customText {
+	display: flex;
 }
+
+// @media all and (max-width: 700px) {
+// 	.customText span {
+// 		font-size: 10px;
+// 	}
+// }

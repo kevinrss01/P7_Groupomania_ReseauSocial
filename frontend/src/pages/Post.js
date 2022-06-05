@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../helpers/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { AiOutlineMore, AiOutlineCheck } from 'react-icons/ai';
 
 function Post() {
 	let { id } = useParams();
@@ -14,7 +15,26 @@ function Post() {
 	const { authState } = useContext(AuthContext);
 	const [role, setRole] = useState('');
 	const [likedPosts, setLikedPosts] = useState([]);
+	const [showParams, setShowParams] = useState(false);
+	const [newPost, setNewPost] = useState('');
+	const [showInput, setShowInput] = useState(false);
+	const [showUpdateCommentInput, setShowUpdateCommentInput] = useState(false);
+	const [commentId, setCommentId] = useState('');
+	const [updateComment, setUpdateComment] = useState('');
 
+	const paramsToggler = () => {
+		if (showInput) {
+			setShowInput((p) => !p);
+			setShowParams((p) => !p);
+		} else {
+			setShowParams((p) => !p);
+		}
+	};
+
+	const inputToggler = () => setShowInput((p) => !p);
+	const commentInputToggler = () => {
+		setShowUpdateCommentInput((p) => !p);
+	};
 	let navigate = useNavigate();
 
 	useEffect(() => {
@@ -34,6 +54,10 @@ function Post() {
 				setListOfPosts(response.data.listOfPosts);
 			});
 	}, [id]);
+
+	const getId = (id) => {
+		setCommentId(id);
+	};
 
 	//button create comment
 	const addComment = () => {
@@ -91,6 +115,7 @@ function Post() {
 			});
 	};
 
+	// console.log(postObject.Likes.length);
 	//GET ROLE
 	axios
 		.get(`http://localhost:3002/auth/basicinfo/${authState.id}`)
@@ -98,7 +123,6 @@ function Post() {
 			setRole(response.data.role);
 		});
 
-	// Object.keys(postObject).map((x) => console.log(x));
 	//LIKE POST
 	const likeAPost = (postId) => {
 		if (localStorage.getItem(`${authState.username}Liked${postId}`)) {
@@ -113,29 +137,83 @@ function Post() {
 				{ headers: { accessToken: localStorage.getItem('accessToken') } }
 			)
 			.then((response) => {
-				// console.log(response.data.liked);
-				// console.log(postObject);
-				// Object.entries(postObject).map((x) => console.log(x));
+				// console.log(response);
 				setListOfPosts(
 					listOfPosts.map((post) => {
 						if (post.id === postId) {
 							if (response.data.liked) {
-								// console.log('like');
+								console.log('1');
 								return { ...post, Likes: [...post.Likes, 0] };
 							} else {
-								// console.log('dislike');
+								console.log('dislike');
 								const likesArray = post.Likes;
 								likesArray.pop();
 								return { ...post, Likes: likesArray };
 							}
 						} else {
-							console.log('post.id === postId is FALSE');
+							console.log('2');
 							return post;
 						}
 					})
 				);
+
+				if (likedPosts.includes(postId)) {
+					setLikedPosts(
+						likedPosts.filter((id) => {
+							return id != postId;
+						})
+					);
+				} else {
+					setLikedPosts([...likedPosts, postId]);
+				}
 			});
 	};
+
+	//UPDATE POST
+	const updatePost = (id) => {
+		if (newPost === '') {
+			console.log('Input vide');
+		} else {
+			axios
+				.put(
+					`http://localhost:3002/posts/${id}`,
+					{ postText: newPost },
+					{ headers: { accessToken: localStorage.getItem('accessToken') } }
+				)
+				.then((response) => {
+					console.log('UPDATE DONE');
+					window.location.reload(false);
+				});
+		}
+	};
+
+	//UPDATE POST
+	const sendUpdateComment = (id) => {
+		if (updateComment === '') {
+			console.log('Input vide');
+		} else {
+			axios
+				.put(
+					`http://localhost:3002/comments/${id}`,
+					{ commentBody: updateComment },
+					{ headers: { accessToken: localStorage.getItem('accessToken') } }
+				)
+				.then((response) => {
+					console.log('UPDATE SUCCESSFULL');
+					window.location.reload(false);
+				});
+		}
+	};
+
+	//ICON
+	const Params = () => {
+		return <AiOutlineMore className="params" onClick={paramsToggler} />;
+	};
+	const ValidUpdate = () => {
+		return <AiOutlineCheck className="valid" />;
+	};
+
+	console.log(likedPosts);
 
 	return (
 		<div className="postPage">
@@ -143,7 +221,30 @@ function Post() {
 				<div className="post" id="individual">
 					<div className="title">{postObject.title}</div>
 					<div className="bodyIndividual">
-						<div className="postText">{postObject.postText}</div>
+						{showInput ? (
+							<>
+								<div className="updatePost">
+									<button
+										className="updateButton"
+										on
+										onClick={() => {
+											updatePost(postObject.id);
+										}}
+									>
+										<ValidUpdate />
+									</button>
+									<input
+										type="text"
+										onChange={(event) => {
+											setNewPost(event.target.value);
+										}}
+									/>
+								</div>
+							</>
+						) : (
+							<div className="postText">{postObject.postText}</div>
+						)}
+
 						{postObject.image !== 'undefined' && (
 							<img
 								src={`http://localhost:3002/${postObject.image}`}
@@ -151,35 +252,50 @@ function Post() {
 							/>
 						)}
 					</div>
+					{showParams && (
+						<div className="parameters">
+							{showInput ? (
+								<button onClick={inputToggler}>Annuler</button>
+							) : (
+								<>
+									<button onClick={inputToggler}>Modifier</button>
+									<button
+										onClick={() => {
+											deletePost(postObject.id);
+										}}
+									>
+										Supprimer
+									</button>
+								</>
+							)}
+						</div>
+					)}
+
 					<div className="footer">
 						<Link className="namePost" to={`/profile/${postObject.UserId}`}>
 							<strong>{postObject.username}</strong>
 						</Link>
-						<FontAwesomeIcon
-							onClick={() => {
-								likeAPost(postObject.id);
-							}}
-							icon={faHeart}
-							className={
-								localStorage.getItem(
-									`${authState.username}Liked${postObject.id}`
-								)
-									? 'unlikePost'
-									: 'likePost'
-							}
-						></FontAwesomeIcon>
+						<div className="commentsAndLikes">
+							<FontAwesomeIcon
+								onClick={() => {
+									likeAPost(postObject.id);
+								}}
+								icon={faHeart}
+								className={
+									localStorage.getItem(
+										`${authState.username}Liked${postObject.id}`
+									)
+										? 'unlikePost'
+										: 'likePost'
+								}
+							></FontAwesomeIcon>
+							{/* <p>{likedPosts.length}</p> */}
+						</div>
 
 						{/*control if you are the creator or admin*/}
 						{authState.username === postObject.username || role === 'admin' ? (
 							<>
-								{/* <label>{likedPosts.length}</label> */}
-								<button
-									onClick={() => {
-										deletePost(postObject.id);
-									}}
-								>
-									<strong>Supprimer le poste</strong>
-								</button>
+								<Params />
 							</>
 						) : (
 							<></>
@@ -218,24 +334,77 @@ function Post() {
 					{comments.map((comment, key) => {
 						return (
 							<div key={key} className="comment">
-								<p className="textComment">{comment.commentBody}</p>
-								<label>
-									Posté(e) par : <strong>{comment.username}</strong>
-								</label>
-								{authState.username === comment.username || role === 'admin' ? (
-									<button
-										className="deleteBtn"
-										onClick={() => {
-											deleteComment(comment.id);
-										}}
-									>
-										<span>
-											<strong>Supprimer</strong>
-										</span>
-									</button>
-								) : (
-									<></>
-								)}
+								<p className="textComment">
+									{showUpdateCommentInput && commentId === comment.id ? (
+										<>
+											<input
+												className="inputUpdateComment"
+												type="text"
+												onChange={(event) => {
+													setUpdateComment(event.target.value);
+												}}
+											/>
+											<button
+												className="newCommentBtn"
+												onClick={() => {
+													sendUpdateComment(comment.id);
+												}}
+											>
+												Valider
+											</button>
+										</>
+									) : (
+										<>{comment.commentBody}</>
+									)}
+								</p>
+								<div className="footerComment">
+									<label>
+										Posté(e) par : <strong>{comment.username}</strong>
+									</label>
+
+									{authState.username === comment.username ||
+									role === 'admin' ? (
+										<>
+											{showUpdateCommentInput && commentId === comment.id ? (
+												<button
+													className="updateCommentBtn"
+													onClick={() => {
+														commentInputToggler();
+													}}
+												>
+													<span>
+														<strong>Annuler</strong>
+													</span>
+												</button>
+											) : (
+												<button
+													className="updateCommentBtn"
+													onClick={() => {
+														commentInputToggler();
+														getId(comment.id);
+													}}
+												>
+													<span>
+														<strong>Modifier</strong>
+													</span>
+												</button>
+											)}
+
+											<button
+												className="deleteBtn"
+												onClick={() => {
+													deleteComment(comment.id);
+												}}
+											>
+												<span>
+													<strong>Supprimer</strong>
+												</span>
+											</button>
+										</>
+									) : (
+										<></>
+									)}
+								</div>
 							</div>
 						);
 					})}
