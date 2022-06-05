@@ -160,7 +160,7 @@ function Post() {
 				if (likedPosts.includes(postId)) {
 					setLikedPosts(
 						likedPosts.filter((id) => {
-							return id != postId;
+							return id !== postId;
 						})
 					);
 				} else {
@@ -303,6 +303,8 @@ function Post() {
 					</div>
 				</div>
 			</div>
+
+			{/* Comments Side */}
 
 			<div className="rightSide">
 				<div className="addCommentContainer">

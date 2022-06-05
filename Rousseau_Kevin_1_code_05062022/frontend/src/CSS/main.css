@@ -816,10 +816,14 @@ h3 {
   font-size: 20px;
 }
 
-.footerComment {
+.comment .footerComment {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.comment .footerComment label {
+  margin: 5px;
 }
 
 label strong {

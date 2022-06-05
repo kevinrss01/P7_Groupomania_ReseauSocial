@@ -26,7 +26,7 @@ function App() {
 		id: 0,
 		role: '',
 		status: false,
-		postsLiked: [],
+		// postsLiked: [],
 	});
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);

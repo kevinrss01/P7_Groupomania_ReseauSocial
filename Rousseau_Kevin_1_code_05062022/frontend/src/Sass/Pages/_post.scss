@@ -156,8 +156,12 @@
 	}
 }
 
-.footerComment {
+.comment .footerComment {
 	@include flex-centre;
+
+	label {
+		margin: 5px;
+	}
 }
 
 label strong {

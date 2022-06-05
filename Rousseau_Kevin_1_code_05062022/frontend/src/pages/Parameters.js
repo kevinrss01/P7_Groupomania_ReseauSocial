@@ -6,16 +6,8 @@ import { AuthContext } from '../helpers/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 function Parameters() {
-	// let askQuestion = false;
-
-	// const showQuestion = () => {
-	// 	askQuestion = true;
-	// 	console.log(askQuestion);
-	// };
-
 	const { authState } = useContext(AuthContext);
-	// const [username, setUsername] = useState('');
-	// const [role, setRole] = useState('');
+
 	const [confirmation, setConfirmation] = useState({
 		show: false,
 	});

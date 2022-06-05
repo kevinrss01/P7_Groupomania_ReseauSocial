@@ -19,18 +19,6 @@ function CreatePost() {
 		}
 	}, []);
 
-	// const initialValues = {
-	// 	title: '',
-	// 	postText: '',
-	// 	image: image,
-	// };
-
-	//CONTROL INPUT
-	// const validationSchema = Yup.object().shape({
-	// 	title: Yup.string().required('Le titre est obligatoire'),
-	// 	postText: Yup.string().required('Veuillez écrire quelque chose'),
-	// });
-
 	const onSubmit = async () => {
 		const formData = new FormData();
 		formData.append('image', image.selectedFile);
@@ -119,35 +107,6 @@ function CreatePost() {
 				</div>
 				<button onClick={onSubmit}> Publier</button>
 			</div>
-
-			{/* <Formik
-				initialValues={initialValues}
-				onSubmit={onSubmit}
-				encType="multipart/form-data"
-				validationSchema={validationSchema}
-			>
-				<Form className="formContainer">
-					<label>Titre : </label>
-					<ErrorMessage name="title" component="span" />
-					<Field id="inputCreatePost" name="title" placeholder="Titre" />
-					<label>Contenu du poste : </label>
-					<ErrorMessage name="postText" component="span" />
-					<Field
-						id="inputTextPost"
-						name="postText"
-						placeholder="Quoi de neuf ?"
-					/>
-					<label>Partager une image : </label>
-					<inpiut
-						type="file"
-						name="image"
-						onChange={(e) => setImage(e.target.files[0])}
-						placeholder="image"
-					></inpiut>
-
-					<button type="submit"> Créer le poste</button>
-				</Form>
-			</Formik> */}
 		</div>
 	);
 }

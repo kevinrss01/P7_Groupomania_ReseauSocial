@@ -11,7 +11,7 @@ function ProfilePage() {
 	let { id } = useParams();
 
 	const [username, setUsername] = useState('');
-	const [comments, setComments] = useState([]);
+	// const [comments, setComments] = useState([]);
 	const { authState } = useContext(AuthContext);
 	// const [role, setRole] = useState('');
 
@@ -46,9 +46,6 @@ function ProfilePage() {
 				{ headers: { accessToken: localStorage.getItem('accessToken') } }
 			)
 			.then((response) => {
-				// console.log(response.data.liked);
-				// console.log(postObject);
-				// Object.entries(postObject).map((x) => console.log(x));
 				setListOfPost(
 					listOfPosts.map((post) => {
 						if (post.id === postId) {
