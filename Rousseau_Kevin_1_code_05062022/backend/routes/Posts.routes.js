@@ -32,7 +32,6 @@ router.get('/byuserId/:id', async (req, res) => {
 });
 
 //CREATE POST
-
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'Images');

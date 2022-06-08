@@ -8,7 +8,7 @@ Backend :
 
 - Placez-vous sur le dossier "backend" avec "cd backend"
 - npm install
-- Ouvrez/ préparer votre base de données sur mysqlworbench grâce au SQL dump fourni.
+- Ouvrez/ préparer votre base de données sur mysqlworkbench grâce au SQL dump fourni.
 - npm start
 
 Frontend :

@@ -59,6 +59,8 @@ function Post() {
 		setCommentId(id);
 	};
 
+	console.log(postObject);
+
 	//button create comment
 	const addComment = () => {
 		axios
@@ -187,7 +189,7 @@ function Post() {
 		}
 	};
 
-	//UPDATE POST
+	//UPDATE COMMENT
 	const sendUpdateComment = (id) => {
 		if (updateComment === '') {
 			console.log('Input vide');

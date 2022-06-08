@@ -12,7 +12,7 @@ function CreatePost() {
 		status: true,
 	});
 
-	//If not connected redirect to home page
+	//If not connected redirect to login
 	useEffect(() => {
 		if (!localStorage.getItem('accessToken')) {
 			navigate('/login');

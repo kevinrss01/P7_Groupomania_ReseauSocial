@@ -32,7 +32,6 @@ function Registration() {
 				console.log('username already taken');
 				setShowErrorMessage(true);
 			} else {
-				console.log('user created');
 				axios
 					.post('http://localhost:3002/auth/login', data)
 					.then((response) => {
@@ -44,6 +43,7 @@ function Registration() {
 						});
 						navigate('/');
 					});
+				console.log('user created');
 			}
 		});
 	};

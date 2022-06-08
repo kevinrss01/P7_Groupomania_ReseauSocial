@@ -25,6 +25,7 @@ function Parameters() {
 			show: false,
 		});
 	};
+
 	//DELETE ACCOUNT
 	const deleteAccount = (id) => {
 		axios

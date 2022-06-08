@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Users } = require('../models');
 const { Posts } = require('../models');
+const { Comments } = require('../models');
 const { Likes } = require('../models');
 const bcrypt = require('bcrypt');
 const { validateToken } = require('../middlewares/AuthMiddlewares');
@@ -84,6 +85,13 @@ router.delete('/delete/:id', validateToken, async (req, res) => {
 			userId: id,
 		},
 	});
+
+	await Comments.destroy({
+		where: {
+			UserId: id,
+		},
+	});
+
 	res.json('delete successfully');
 });
 
