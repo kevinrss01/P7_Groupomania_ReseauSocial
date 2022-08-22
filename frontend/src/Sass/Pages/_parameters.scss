@@ -1,0 +1,61 @@
+.headerParams {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.gearIcon {
+		font-size: 30px;
+		margin: 10px;
+	}
+}
+
+.parametersPage body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.deleteQuestion {
+	background-color: red;
+	width: 300px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px;
+	margin-bottom: 15px;
+
+	p {
+		color: white;
+		font-weight: bold;
+		text-align: center;
+	}
+}
+
+.YesOrNo {
+	display: flex;
+	justify-content: space-between;
+
+	.yes {
+		font-weight: bold;
+		width: 100px;
+		height: 50px;
+	}
+
+	.no {
+		font-weight: bold;
+		width: 100px;
+		height: 50px;
+	}
+}
+
+.YesOrNo .yes:hover {
+	color: white;
+	background-color: red;
+}
+
+.YesOrNo .no:hover {
+	background-color: green;
+	color: white;
+}

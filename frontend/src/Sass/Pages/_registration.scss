@@ -1,0 +1,36 @@
+.registrationContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+
+	.formCreateUserContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 50%;
+		height: auto;
+		padding: 20px;
+		border: 5px solid $couleur_primaire;
+		border-radius: 5px;
+
+		label {
+			font-size: 22px;
+			color: black;
+		}
+
+		input {
+			height: 30px;
+			margin: 15px 0px 15px 0px;
+			height: 50px;
+			font-size: 20px;
+		}
+
+		.errorMessage {
+			color: red;
+			font-size: 23px;
+			text-decoration: underline;
+		}
+	}
+}

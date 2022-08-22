@@ -1,0 +1,33 @@
+.basicInfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+.listOfPosts {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column-reverse;
+	width: 100%;
+	height: auto;
+
+	.post {
+		width: 70%;
+	}
+
+	.footer {
+		height: 50px;
+	}
+}
+
+h3 {
+	padding: 20px;
+}
+
+.commentsAndLikes {
+	@include flex-centre;
+	margin-right: 10px;
+}

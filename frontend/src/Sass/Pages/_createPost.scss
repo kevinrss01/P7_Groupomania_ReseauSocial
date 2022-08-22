@@ -1,0 +1,88 @@
+/***** CREATE POST PAGE CSS ******/
+
+.createPostPage {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 100%;
+	height: 70vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	.formContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 50%;
+		height: auto;
+		padding: 20px;
+		border: 5px solid $couleur_primaire;
+		border-radius: 5px;
+
+		h1 {
+			background-color: $couleur_secondaire;
+			border-radius: 10px;
+			padding: 5px;
+			text-align: center;
+		}
+
+		label {
+			font-size: 25px;
+			margin-bottom: 6px;
+			color: black;
+		}
+
+		.inputText {
+			height: 40px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border: 2px solid grey;
+			border-radius: 5px;
+			padding-left: 10px;
+			font-size: 20px;
+		}
+
+		.inputTextPost {
+			height: 100px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border: 2px solid grey;
+			border-radius: 5px;
+			padding-left: 10px;
+			font-size: 20px;
+		}
+	}
+}
+
+span {
+	color: red;
+	font-weight: bold;
+}
+
+.containerImageUpload {
+	display: flex;
+	align-items: center;
+
+	input[type='file'] {
+		display: none;
+	}
+
+	span {
+		color: grey;
+		text-align: center;
+	}
+}
+
+.customText span {
+	padding: 10px;
+}
+
+.customText {
+	display: flex;
+}
+
+// @media all and (max-width: 700px) {
+// 	.customText span {
+// 		font-size: 10px;
+// 	}
+// }

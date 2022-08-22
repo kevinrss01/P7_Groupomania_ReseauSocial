@@ -1,0 +1,20 @@
+$couleur_primaire: #fd2d01;
+$couleur_secondaire: #ffd7d7;
+$couleur_tertiaire: #4e5166;
+
+@mixin flex-centre {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin margin-button {
+	margin: 15px;
+}
+
+@mixin flex-centre-colonne {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

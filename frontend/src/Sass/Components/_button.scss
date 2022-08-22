@@ -1,0 +1,209 @@
+/* Button logout */
+button,
+a,
+svg,
+span {
+	transition: 0.4s ease background-color, 0.4s ease color,
+		0.3s ease border-bottom, 0.3s ease font-size, 0.3s ease height,
+		0.3s ease width, 0.3s ease opacity;
+}
+
+button {
+	font-size: 20px;
+	background-color: $couleur-tertiaire;
+	color: white;
+}
+
+.navbar a button,
+.params a button {
+	width: 150px;
+	text-decoration: 40px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.navbar a button:hover,
+.params a button:hover {
+	color: red;
+	font-size: 20px;
+}
+
+.loginContainer .loginBtn {
+	font-size: 20px;
+	background-color: $couleur-tertiaire;
+}
+
+.loginBtn:hover {
+	font-size: 22px;
+}
+
+/* delete button */
+
+.deleteAccountButton {
+	height: 60px;
+	width: 200px;
+}
+
+.deleteAccountButton:hover {
+	background-color: red;
+	color: white;
+}
+
+.parameters button {
+	width: 120px;
+	height: 55px;
+	margin: 5px 5px 0px 0px;
+}
+
+.footerComment .deleteBtn {
+	border: 1px solid white;
+}
+
+.parameters button:hover {
+	color: red;
+	font-size: 22px;
+}
+
+.deleteBtn span {
+	color: red;
+	font-size: 15px;
+	@include flex-centre;
+}
+
+.listOfComments .comment .deleteBtn {
+	height: 40px;
+	width: 100px;
+	@include margin-button;
+}
+
+.deleteBtn:hover > span {
+	color: white;
+}
+
+.deleteBtn:hover {
+	background-color: red;
+}
+
+/*UPDATE BUTTON*/
+
+.updateCommentBtn {
+	height: 40px;
+	width: 100px;
+	@include margin-button;
+	border: 1px solid white;
+
+	span {
+		color: white;
+		font-size: 15px;
+		@include flex-centre;
+	}
+}
+
+.updateCommentBtn:hover > span {
+	font-size: 18px;
+}
+
+.footer button {
+	color: red;
+	margin: 10px;
+}
+
+.footer button:hover {
+	background-color: red;
+	color: white;
+}
+
+.updateButton {
+	width: 10%;
+	font-size: 18px;
+}
+
+.updateButton:hover {
+	background-color: darken($color: #adff2f, $amount: 10%);
+}
+
+.textComment .newCommentBtn {
+	margin-left: 5px;
+	width: 18%;
+}
+
+.textComment .newCommentBtn:hover {
+	font-size: 23px;
+	height: 54px;
+	width: 20%;
+}
+
+/*Button Image*/
+
+.containerImageUpload #customButton {
+	@include flex-centre;
+	margin: 0px;
+
+	p {
+		margin-right: 5px;
+	}
+
+	span {
+		color: white;
+	}
+}
+
+/* button create comment/post */
+
+.formContainer button {
+	margin-top: 15px;
+	height: 40px;
+	border: none;
+	background-color: $couleur-tertiaire;
+	border-radius: 5px;
+	color: white;
+	font-size: 15px;
+}
+
+.formContainer button:hover {
+	cursor: pointer;
+	background-color: $couleur_primaire;
+}
+
+.addCommentContainer input,
+button {
+	width: 200px;
+	height: 50px;
+	border-radius: 8px;
+	border: 2px solid $couleur-tertiaire;
+	cursor: pointer;
+}
+
+.addCommentContainer button {
+	background-color: $couleur_tertiaire;
+	font-size: 22px;
+	color: white;
+	@include margin-button;
+}
+
+.addCommentContainer button:hover {
+	background-color: white;
+	color: black;
+}
+
+.loginContainer button {
+	background-color: $couleur_primaire;
+	color: white;
+}
+
+//RESPONSIVE
+@media all and (max-width: 1100px) {
+	.textComment .newCommentBtn {
+		width: 80px;
+	}
+
+	.textComment .newCommentBtn:hover {
+		font-size: 20px;
+		color: #adff2f;
+		width: 80px;
+	}
+
+	.updatePost .updateButton {
+		width: 20%;
+	}
+}

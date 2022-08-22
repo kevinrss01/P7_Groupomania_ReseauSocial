@@ -1,0 +1,189 @@
+/* INDIVIDUAL POST */
+.postPage {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-height: 100000000px;
+}
+
+.leftSide {
+	padding: 25px 0px 15px 0px;
+	flex: 50%;
+	height: calc(100vh - 70px);
+	display: grid;
+	place-items: center;
+}
+
+.rightSide {
+	flex: 50%;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	display: flex;
+	flex-direction: column;
+
+	.addCommentContainer {
+		max-height: 300px;
+		width: 90%;
+		display: grid;
+		place-items: center;
+		margin-top: 25px;
+		border: 3px solid $couleur_tertiaire;
+		border-radius: 10px;
+		background-color: $couleur_primaire;
+
+		input {
+			border: 2px solid $couleur_primaire;
+			margin-bottom: 10px;
+			width: 300px;
+			font-size: 20px;
+		}
+
+		h1 {
+			color: white;
+		}
+	}
+}
+
+.rightSide .listOfComments {
+	min-height: 20%;
+	max-height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	margin-top: 20px;
+
+	.comment {
+		width: 70%;
+		height: auto;
+		padding: 0px 30px 0px 30px;
+		border: 2px solid $couleur_primaire;
+		border-radius: 5px;
+		margin: 20px 0px 20px 0px;
+		background-color: $couleur-tertiaire;
+		.textComment {
+			margin: 15px;
+		}
+	}
+}
+
+#individual {
+	height: auto;
+	max-height: 1000px;
+	width: 90%;
+
+	.title {
+		height: 50px;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		font-size: 30px;
+
+		.likeAndDelete {
+			@include flex-centre;
+		}
+	}
+
+	.bodyIndividual {
+		font-size: 25px;
+
+		.postText {
+			padding: 15px;
+			width: 100%;
+		}
+
+		img {
+			width: 80%;
+			height: auto;
+			max-width: 600px;
+			min-width: 250px;
+			border-radius: 15px;
+			border: 1px solid grey;
+			margin-bottom: 15px;
+		}
+	}
+
+	.updatePost {
+		width: 100%;
+		@include flex-centre;
+	}
+
+	input {
+		width: 40%;
+		height: 40px;
+		font-size: 20px;
+		margin: 10px;
+	}
+
+	.valid {
+		font-size: 40px;
+	}
+}
+
+.post .bodyIndividual {
+	@include flex-centre-colonne;
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+	height: 80%;
+}
+
+.post .bodyIndividual {
+	@include flex-centre-colonne;
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+	height: 80%;
+}
+
+.textComment {
+	font-size: 20px;
+	text-align: center;
+	margin: 30px;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 15px;
+	overflow-wrap: break-word;
+
+	.inputUpdateComment {
+		width: 50%;
+		height: 40px;
+		font-size: 20px;
+	}
+}
+
+.comment .footerComment {
+	@include flex-centre;
+
+	label {
+		margin: 5px;
+	}
+}
+
+label strong {
+	font-size: 17px;
+}
+
+label {
+	color: white;
+}
+
+@media all and (max-width: 1100px) {
+	.postPage {
+		flex-direction: column;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.leftSide {
+		margin: 100px 0px 100px 0px;
+	}
+
+	.newCommentBtn {
+		width: 100px;
+	}
+}

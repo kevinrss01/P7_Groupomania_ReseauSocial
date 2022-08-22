@@ -1,0 +1,164 @@
+/* NAVBAR */
+
+.navbar {
+	width: 100%;
+	height: 70px;
+	background-color: $couleur_primaire;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: Arial, Helvetica, sans-serif;
+
+	// position: fixed;
+	// z-index: 1000;
+}
+
+.navbar a {
+	margin: 0px 10px 0px 10px;
+	text-decoration: none;
+	color: white;
+	font-size: 25px;
+}
+
+.navbar .img {
+	height: 70px;
+	width: 250px;
+	margin-right: 20px;
+}
+
+.navbar img {
+	height: auto;
+	width: 260px;
+}
+
+.navbar .connectAndRegister a:hover {
+	border-bottom: 3px solid white;
+}
+
+.navbar .CreateAndMainPage a:hover {
+	border-bottom: 3px solid white;
+}
+
+.navbar h1 {
+	color: white;
+	padding: 10px;
+	font-size: 20px;
+}
+
+.navbarRight {
+	@include flex-centre;
+}
+
+.navbarRight .gearIcon {
+	font-size: 25px;
+	color: black;
+}
+
+.navbarRight a:hover {
+	border-bottom: none;
+}
+
+.navbarRight .gearIcon:hover {
+	color: white;
+	cursor: pointer;
+	font-size: 26px;
+}
+
+#navbarResponsive {
+	@include flex-centre-colonne;
+	width: 100%;
+
+	.loginRegistration,
+	.createPost,
+	.params {
+		@include flex-centre-colonne;
+		width: 100%;
+		a {
+			background-color: rgba($color: $couleur_primaire, $alpha: 0.6);
+			width: 100%;
+			height: 60px;
+			@include flex-centre;
+			text-decoration: none;
+			border-top: 2px solid grey;
+			font-size: 20px;
+			color: black;
+			font-weight: bold;
+			transition: 0.5s ease background-color;
+		}
+
+		a:hover {
+			background-color: $couleur_primaire;
+		}
+
+		.gearIcon {
+			margin: 5px;
+		}
+	}
+}
+
+.btnResponsive {
+	// reset to default
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	letter-spacing: inherit;
+	color: inherit;
+	font-size: inherit;
+	text-align: inherit;
+	padding: 0;
+	color: white;
+	@include flex-centre;
+	svg {
+		font-size: 60px;
+		border-radius: 30px;
+	}
+
+	svg:hover {
+		background-color: white;
+		color: $couleur_primaire;
+	}
+}
+
+.btnResponsive2 {
+	// reset to default
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	letter-spacing: inherit;
+	color: inherit;
+	font-size: inherit;
+	text-align: inherit;
+	padding: 0;
+	color: white;
+	@include flex-centre;
+	svg {
+		font-size: 50px;
+		border-radius: 30px;
+	}
+
+	svg:hover {
+		color: darken($color: #ff0000, $amount: 5%);
+	}
+}
+
+.btnResponsive:hover {
+	color: white;
+}
+
+@media all and (min-width: 1100px) {
+	#navbarResponsive,
+	.btnResponsive,
+	.btnResponsive2 {
+		display: none;
+	}
+}
+
+@media all and (max-width: 1100px) {
+	.connectAndRegister,
+	.CreateAndMainPage,
+	.navbarRight {
+		display: none;
+	}
+}
