@@ -4,7 +4,7 @@ const { Users } = require('../models');
 const { Posts } = require('../models');
 const { Comments } = require('../models');
 const { Likes } = require('../models');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { validateToken } = require('../middlewares/AuthMiddlewares');
 const { sign } = require('jsonwebtoken');
 

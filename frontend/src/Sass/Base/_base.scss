@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+	font-family: 'Bebas Neue', cursive;
+}
+
 .App {
 	width: 100vw;
 	height: auto;
@@ -9,6 +15,8 @@ body {
 	background-color: $couleur_secondaire;
 }
 
-* {
-	font-family: 'Lato', sans-serif;
+.flex_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

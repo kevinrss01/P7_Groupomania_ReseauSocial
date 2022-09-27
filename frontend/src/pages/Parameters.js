@@ -29,7 +29,7 @@ function Parameters() {
 	//DELETE ACCOUNT
 	const deleteAccount = (id) => {
 		axios
-			.delete(`http://localhost:3002/auth/delete/${id}`, {
+			.delete(`https://groupomania-kevin.herokuapp.com/auth/delete/${id}`, {
 				headers: { accessToken: localStorage.getItem('accessToken') },
 			})
 			.then(() => {

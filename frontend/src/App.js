@@ -34,7 +34,7 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:3002/auth/auth', {
+			.get('https://groupomania-kevin.herokuapp.com/auth/auth', {
 				headers: {
 					accessToken: localStorage.getItem('accessToken'),
 				},

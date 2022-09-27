@@ -25,8 +25,13 @@ app.use('/likes', likesRouter);
 //Static Images Folder
 app.use('/Images', express.static('./Images'));
 
-db.sequelize.sync().then(() => {
-	app.listen(3002, () => {
-		console.log('Server running on port 3002');
+db.sequelize
+	.sync()
+	.then(() => {
+		app.listen(process.env.PORT || 3002, () => {
+			console.log('Server running on port 3002');
+		});
+	})
+	.catch((err) => {
+		console.log(err);
 	});
-});

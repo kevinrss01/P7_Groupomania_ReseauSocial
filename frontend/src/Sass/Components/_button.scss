@@ -30,6 +30,7 @@ button {
 
 .loginContainer .loginBtn {
 	font-size: 20px;
+	width: 100px;
 	background-color: $couleur-tertiaire;
 }
 
@@ -82,6 +83,29 @@ button {
 
 .deleteBtn:hover {
 	background-color: red;
+}
+/* LOGIN PAGE */
+
+.registrationBtn {
+	height: 50px;
+	width: 50%;
+	background-color: white;
+	color: #ccc5c5dd;
+	border: none;
+	border-radius: 10px;
+	font-size: 25px;
+	text-align: center;
+	padding: 0%;
+}
+
+.registrationBtn:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.loginContainer button {
+	background-color: $couleur_primaire;
+	color: white;
 }
 
 /*UPDATE BUTTON*/
@@ -184,11 +208,6 @@ button {
 .addCommentContainer button:hover {
 	background-color: white;
 	color: black;
-}
-
-.loginContainer button {
-	background-color: $couleur_primaire;
-	color: white;
 }
 
 //RESPONSIVE

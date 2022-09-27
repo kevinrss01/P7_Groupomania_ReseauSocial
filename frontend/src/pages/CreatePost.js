@@ -27,7 +27,7 @@ function CreatePost() {
 
 		if (title !== '' && postText !== '') {
 			axios
-				.post('http://localhost:3002/posts', formData, {
+				.post('https://groupomania-kevin.herokuapp.com/posts', formData, {
 					headers: { accessToken: localStorage.getItem('accessToken') },
 				})
 				.then((response) => {

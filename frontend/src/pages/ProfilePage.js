@@ -19,13 +19,17 @@ function ProfilePage() {
 	let navigate = useNavigate();
 
 	useEffect(() => {
-		axios.get(`http://localhost:3002/auth/basicinfo/${id}`).then((response) => {
-			setUsername(response.data.username);
-		});
+		axios
+			.get(`https://groupomania-kevin.herokuapp.com/auth/basicinfo/${id}`)
+			.then((response) => {
+				setUsername(response.data.username);
+			});
 
-		axios.get(`http://localhost:3002/posts/byuserid/${id}`).then((response) => {
-			setListOfPost(response.data);
-		});
+		axios
+			.get(`https://groupomania-kevin.herokuapp.com/posts/byuserid/${id}`)
+			.then((response) => {
+				setListOfPost(response.data);
+			});
 	}, []);
 
 	//ICON
@@ -41,7 +45,7 @@ function ProfilePage() {
 		}
 		axios
 			.post(
-				'http://localhost:3002/likes',
+				'https://groupomania-kevin.herokuapp.com/likes',
 				{ PostId: postId },
 				{ headers: { accessToken: localStorage.getItem('accessToken') } }
 			)
@@ -88,7 +92,7 @@ function ProfilePage() {
 								<p>{value.postText}</p>
 								{value.image !== 'undefined' && (
 									<img
-										src={`http://localhost:3002/${value.image}`}
+										src={`https://groupomania-kevin.herokuapp.com/${value.image}`}
 										alt={value.image}
 									/>
 								)}

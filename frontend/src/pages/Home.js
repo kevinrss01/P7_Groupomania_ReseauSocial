@@ -25,7 +25,7 @@ function Home() {
 			navigate('/login');
 		} else {
 			axios
-				.get('http://localhost:3002/posts', {
+				.get('https://groupomania-kevin.herokuapp.com/posts', {
 					headers: { accessToken: localStorage.getItem('accessToken') },
 				})
 				.then((response) => {
@@ -48,8 +48,6 @@ function Home() {
 		}
 	}, []);
 
-	console.log(listOfPosts);
-
 	const likeAPost = (postId) => {
 		if (localStorage.getItem(`${authState.username}Liked${postId}`)) {
 			localStorage.removeItem(`${authState.username}Liked${postId}`);
@@ -58,7 +56,7 @@ function Home() {
 		}
 		axios
 			.post(
-				'http://localhost:3002/likes',
+				'https://groupomania-kevin.herokuapp.com/likes',
 				{ PostId: postId },
 				{ headers: { accessToken: localStorage.getItem('accessToken') } }
 			)
@@ -109,7 +107,7 @@ function Home() {
 								<div className="postText">{value.postText}</div>
 								{value.image !== 'undefined' && (
 									<img
-										src={`http://localhost:3002/${value.image}`}
+										src={`https://groupomania-kevin.herokuapp.com/${value.image}`}
 										alt={value.image}
 									/>
 								)}
