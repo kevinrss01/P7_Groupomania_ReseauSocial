@@ -19,7 +19,7 @@ function Registration() {
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 	const { setAuthState } = useContext(AuthContext);
 
-	//CONTROLE INPUT
+	//CONTROLE INPUTs
 	const validationSchema = Yup.object().shape({
 		username: Yup.string()
 			.min(3, "Nom d'utilisateur trop court")
